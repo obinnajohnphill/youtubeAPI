@@ -91,7 +91,7 @@
     </div>
 
     <form id="form" onkeyup="submitFunction()" method="post" action="/videos">
-        <input type="text" name="searchItem" placeholder="Key in your search">
+        <input  type="text" name="searchItem" placeholder="Key in your search">
         {{ csrf_field() }}
     </form>
 

@@ -30,8 +30,6 @@ class SearchVideosController  extends Controller
         ];
 
 
-
-
         // An array to store page tokens so we can go back and forth
                 $pageTokens = [];
 
@@ -59,20 +57,21 @@ class SearchVideosController  extends Controller
         // Add results key with info parameter set
         // print_r($search['results']);
 
+        ## sort the YouTube Videos ready for the laravel blade
         foreach ($search['results'] as $result){
 
-          return view('videos.show')->with('data', ['video' => $result->id->videoId, 'decription' => $result->snippet->title]);
+           $video  = $result->id->videoId;
+           $title  = $result->snippet->title;
+
+            $results[] = [
+                'video'    => $video,
+                'title' => $title,
+            ];
 
         }
 
+        return view('videos.show', compact('results'));
 
-
-
-       // $vi = "jej34hDRGWg";
-       // $desc = "Hello World";
-
-       // return view('videos.show')->with('data',$data);
-       // return view('videos.show')->with('data', ['video' => $vi, 'decription' => $desc]);
 
     }
 
