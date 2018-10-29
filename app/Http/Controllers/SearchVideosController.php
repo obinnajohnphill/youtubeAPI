@@ -10,7 +10,7 @@ namespace App\Http\Controllers;
 
 use Alaouy\Youtube\Facades\Youtube;
 use Illuminate\Support\Facades\Input;
-//use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Redirect;
 
 
 
@@ -57,12 +57,22 @@ class SearchVideosController  extends Controller
                 $search = Youtube::paginateResults($params, $pageTokens[0]);
 
         // Add results key with info parameter set
-        print_r($search['results']);
+        // print_r($search['results']);
+
+        foreach ($search['results'] as $result){
+
+          return view('videos.show')->with('data', ['video' => $result->id->videoId, 'decription' => $result->snippet->title]);
+
+        }
 
 
-        dd("Ends");
 
-       // return Redirect::to('members/'. $searchItem) ;
+
+       // $vi = "jej34hDRGWg";
+       // $desc = "Hello World";
+
+       // return view('videos.show')->with('data',$data);
+       // return view('videos.show')->with('data', ['video' => $vi, 'decription' => $desc]);
 
     }
 
