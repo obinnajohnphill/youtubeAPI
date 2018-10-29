@@ -107,7 +107,7 @@
             <label for="searchItem">Search Video:</label>
             <input type="text" class="form-control form-control input-lg"  placeholder="Enter a search keyword" name="searchItem"><br>
             <label for="num_of_video">Number of Videos:</label>
-            <input type="number" min="1" class="form-control form-control input-lg" id="num_of_video" placeholder="Select number of videos" name="num_of_video"><br>
+            <input type="number" min="1" max="50" class="form-control form-control input-lg" id="num_of_video" placeholder="Select number of videos (maximum: 50)" name="num_of_video"><br>
         <button type="submit" class="btn btn-primary">Submit</button>
         </div>
         {{ csrf_field() }}
