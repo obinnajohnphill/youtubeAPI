@@ -71,7 +71,7 @@
 <body>
 <div class="content">
     <div class="title m-b-md">
-        <h2>Here's Your YouTube Video Result</h2>
+        <h2>Here's Your YouTube Videos Search Result</h2>
     </div>
 
     @yield('content')
