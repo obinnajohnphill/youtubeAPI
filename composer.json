@@ -9,10 +9,13 @@
         "alaouy/youtube": "^2.2",
         "elliesl/laravel-aliyun-rdkafka": "^0.1.2",
         "fideloper/proxy": "^4.0",
-        "laravel/framework": "5.7.*",
+        "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
         "predis/predis": "^1.1",
-        "superbalist/laravel-pubsub": "^3.0"
+        "rapide/laravel-queue-kafka": "^0.3.0",
+        "spatie/laravel-medialibrary": "^7.5",
+        "superbalist/laravel-pubsub": "^3.0",
+        "superbalist/php-pubsub-kafka": "^2.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
