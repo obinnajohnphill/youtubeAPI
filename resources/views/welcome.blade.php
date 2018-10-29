@@ -45,7 +45,7 @@
         }
 
         .content {
-            text-align: center;
+            text-align: left;
         }
 
         .title {
@@ -65,6 +65,14 @@
         .m-b-md {
             margin-bottom: 30px;
         }
+
+       #form{
+            min-width: 0;
+            width: 70%;
+            display: inline;
+        }
+
+
     </style>
 
     <script>
@@ -93,20 +101,18 @@
         <h2>Welcome to Obinna's YouTube Videos API</h2>
     </div>
 
-    <div width="50%">
     <form id="form" method="post" action="/videos">
-        <div class="form-group">
+        <br>
+        <div class="col-md-4" align ="left">
             <label for="searchItem">Search Video:</label>
-            <input type="text" class="form-control form-control input-lg"  placeholder="Enter Search Text" name="searchItem">
-        </div>
-        <div class="form-group">
+            <input type="text" class="form-control form-control input-lg"  placeholder="Enter a search keyword" name="searchItem"><br>
             <label for="num_of_video">Number of Videos:</label>
-            <input type="number" default = "1" class="form-control form-control input-lg" id="num_of_video" placeholder="Select number" name="num_of_video">
+            <input type="number" min="1" class="form-control form-control input-lg" id="num_of_video" placeholder="Select number of videos" name="num_of_video"><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
         {{ csrf_field() }}
     </form>
-    </div>
+
 </div>
 
 </body>
