@@ -21,12 +21,13 @@ class SearchVideosController  extends Controller
     {
 
         $searchItem = Input::post('searchItem') ;
+        $num_of_video = Input::post('num_of_video');
 
         $params = [
             'q' => $searchItem,
             'type' => 'video',
             'part' => 'id, snippet',
-            'maxResults' => 50
+            'maxResults' => $num_of_video
         ];
 
 
