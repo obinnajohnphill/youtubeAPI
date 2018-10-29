@@ -75,23 +75,6 @@
 
     </style>
 
-    <script>
-        var delay = (function(){
-            var timer = 0;
-            return function(callback, ms){
-                clearTimeout (timer);
-                timer = setTimeout(callback, ms);
-            };
-        })();
-
-        function submitFunction() {
-            $('input').keyup(function () {
-                delay(function () {
-                    document.getElementById("form").submit();
-                }, 50);
-            });
-        }
-    </script>
 
 </head>
 <body>
@@ -105,9 +88,9 @@
         <br>
         <div class="col-md-4" align ="left">
             <label for="searchItem">Search Video:</label>
-            <input type="text" class="form-control form-control input-lg"  placeholder="Enter a search keyword" name="searchItem"><br>
+            <input required type="text" class="form-control form-control input-lg"  placeholder="Enter a search keyword" name="searchItem"><br>
             <label for="num_of_video">Number of Videos:</label>
-            <input type="number" min="1" max="50" class="form-control form-control input-lg" id="num_of_video" placeholder="Select number of videos (maximum: 50)" name="num_of_video"><br>
+            <input required  type="number" min="1" max="50" class="form-control form-control input-lg" id="num_of_video" placeholder="Select number of videos (maximum: 50)" name="num_of_video"><br>
         <button type="submit" class="btn btn-primary">Submit</button>
         </div>
         {{ csrf_field() }}
