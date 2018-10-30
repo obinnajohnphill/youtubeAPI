@@ -149,6 +149,7 @@ return [
         Superbalist\LaravelPubSub\PubSubServiceProvider::class,
         Alaouy\Youtube\YoutubeServiceProvider::class,
        // 'Youtube' => Alaouy\Youtube\Facades\Youtube::class,
+        Superbalist\LaravelPubSub\PubSubServiceProvider::class,
 
 
         /*
@@ -212,6 +213,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'PubSub' => Superbalist\LaravelPubSub\PubSubFacade::class,
 
     ],
 
