@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class SearchVideosController  extends Controller
 {
+    public $data;
 
     public function index()
     {
@@ -64,6 +65,8 @@ class SearchVideosController  extends Controller
            $video  = $result->id->videoId;
            $title  = $result->snippet->title;
 
+           $this->data = $title;
+
             $results[] = [
                 'video'    => $video,
                 'title' => $title,
@@ -74,6 +77,10 @@ class SearchVideosController  extends Controller
         return view('videos.show', compact('results'));
 
 
+    }
+
+    public function passData(){
+        return $this->data;
     }
 
 }
