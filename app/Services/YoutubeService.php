@@ -13,7 +13,8 @@ use App\Repositories\YoutubeRepository;
 
 class YoutubeService
 {
-    public function youtubeData ($searchItem,$num_of_video,$save){
+    public function youtubeData ($searchItem,$num_of_video,$save)
+    {
 
 
         $params = [
@@ -49,16 +50,22 @@ class YoutubeService
         $search = Youtube::paginateResults($params, $pageTokens[0]);
 
         ## Determine whether to save video into DB or not
-        if ($save == NULL){
+        $save = new YoutubeRepository();
+        $duplicate = $save->cannotSave();
+        if ($duplicate == true){
+            dd("duplicate exist");
+        }
+
+        if ($save == NULL) {
             return $search['results'];
-        }else{
+        } else {
             $save = new YoutubeRepository();
             $save->insertVideo($search['results']);
-            $search['results'] = array($search['results'],"yes");
+            $search['results'] = array($search['results'], "yes");
             return $search['results'];
         }
 
-
     }
+
 
 }

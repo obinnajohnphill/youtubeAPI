@@ -80,6 +80,9 @@
     @if(!empty($successMsg))
         <div class="alert alert-success"><strong>{{ $successMsg }}</strong></div>
     @endif
+    @if(!empty($unsuccessMsg))
+        <div class="alert alert-danger"><strong>{{ $unsuccessMsg }}</strong></div>
+    @endif
     @if(isset($results))
         @foreach($results as $result)
             <h4>{{$result['title']}}</h4>

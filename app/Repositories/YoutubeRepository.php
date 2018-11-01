@@ -12,6 +12,8 @@ use App\YoutubeVideosModel;
 class YoutubeRepository implements RepositoryInterface
 {
 
+    public $cannotSave;
+
 
     // Get all instances of model
     public function all()
@@ -24,17 +26,27 @@ class YoutubeRepository implements RepositoryInterface
     }
 
 
-    public function insertVideo($data){
+    public function insertVideo($data)
+    {
 
-        foreach ($data as $result){
+        foreach ($data as $result) {
             $video = new YoutubeVideosModel;
-            $video->video_id = $result->id->videoId;
-            $video->title = $result->snippet->title;
-            //$video->save();
+            $exist = YoutubeVideosModel::where('video_id', $result->id->videoId)->first();
+            if (!$exist) {
+                $video->video_id = $result->id->videoId;
+                $video->title = $result->snippet->title;
+                $video->save();
+            } else {
+                $this->cannotSave = true;
+                dd($this->cannotSave);
+            }
         }
 
     }
 
-
+    ## Sets to true if video(s) has duplicate
+    public function cannotSave(){
+       return $this->cannotSave;
+    }
 
 }

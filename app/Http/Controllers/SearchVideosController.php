@@ -11,8 +11,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
 use App\Services\YoutubeService;
-use App\Repositories\YoutubeRepository;
-
 
 
 class SearchVideosController  extends Controller
@@ -52,7 +50,7 @@ class SearchVideosController  extends Controller
         }
 
         ## Return data (video details) to the show blade
-        if($this->save_video  == false){
+        if($this->save_video  == NULL){
             return view('videos.show', compact('results'));
         }else{
             return view('videos.show', compact('results'))->with('successMsg','These video(s) have been successfully save into the database.');
