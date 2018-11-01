@@ -30,7 +30,7 @@ class YoutubeRepository implements RepositoryInterface
             $video = new YoutubeVideosModel;
             $video->video_id = $result->id->videoId;
             $video->title = $result->snippet->title;
-            $video->save();
+            //$video->save();
         }
 
     }

@@ -16,4 +16,8 @@ Route::get('/', function () {
 });
 
 
+Route::get('/videos', function () {
+    return view('videos/show');
+});
+
 Route::post('videos','SearchVideosController@index');

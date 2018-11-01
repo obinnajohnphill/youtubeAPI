@@ -18,6 +18,7 @@ use App\Repositories\YoutubeRepository;
 class SearchVideosController  extends Controller
 {
     public $data;
+    public $save_video;
 
     public function index()
     {
@@ -30,9 +31,14 @@ class SearchVideosController  extends Controller
         $data = new YoutubeService();
         $search = $data->youtubeData ($searchItem,$num_of_video,$save);
 
-        ## sort the YouTube Videos ready for the laravel blade
-        foreach ($search[0] as $result){
+        ## Check if the save video option is included in search result array
+        if (array_key_exists("1",$search)){
+            $this->save_video = true;
+            $search = $search[0];
+        }
 
+        ## sort the YouTube Videos ready for the laravel blade
+        foreach ($search as $result){
            $video  = $result->id->videoId;
            $title  = $result->snippet->title;
 
@@ -46,7 +52,7 @@ class SearchVideosController  extends Controller
         }
 
         ## Return data (video details) to the show blade
-        if($search[1] == NULL){
+        if($this->save_video  == false){
             return view('videos.show', compact('results'));
         }else{
             return view('videos.show', compact('results'))->with('successMsg','These video(s) have been successfully save into the database.');

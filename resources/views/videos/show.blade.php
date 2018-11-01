@@ -73,8 +73,10 @@
     <div class="title m-b-md">
         <h2>YouTube Videos Search Result</h2>
     </div>
-
     @yield('content')
+    <nav class="navbar navbar-expand-sm navbar-light bg-dark">
+        <a class="navbar-brand" href="../">Go Back</a>
+    </nav>
     @if(!empty($successMsg))
         <div class="alert alert-success"><strong>{{ $successMsg }}</strong></div>
     @endif
