@@ -69,15 +69,23 @@
 </head>
 
 <body>
+
 <div class="content">
     <div class="title m-b-md">
         <h2>YouTube Videos Search Result</h2>
     </div>
+
     @yield('content')
-    <nav class="navbar navbar-expand-sm navbar-light bg-dark">
-        <a class="navbar-brand" href="../">Go Back</a>
-    </nav>
-    @if(!empty($successMsg))
+       <div align=left">
+        <a class="btn btn-info btn-sm" float-right href="../"><strong>Back to the search page</strong></a>
+      </div>
+            <form id="form" method="post" action="/viewAll">
+                   <input type="hidden" value="yes" name="viewAll"><br>
+                <button type="submit" class="btn btn-primary btn-sm"><strong>View All Videos Saved</strong></button>
+                {{ csrf_field() }}
+            </form><br>
+
+@if(!empty($successMsg))
         <div class="alert alert-success"><strong>{{ $successMsg }}</strong></div>
     @endif
     @if(!empty($unsuccessMsg))

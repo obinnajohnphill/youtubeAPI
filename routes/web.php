@@ -21,3 +21,7 @@ Route::get('/videos', function () {
 });
 
 Route::post('videos','SearchVideosController@index');
+
+Route::post('viewAll','SearchVideosController@getAll');
+
+

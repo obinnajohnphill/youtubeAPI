@@ -19,7 +19,6 @@ class YoutubeRepository implements RepositoryInterface
     public function all()
     {
         $data = YoutubeVideosModel::all();
-
         foreach ($data as $videos) {
             return $videos;
         }

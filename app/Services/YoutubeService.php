@@ -10,6 +10,7 @@ namespace App\Services;
 
 use Alaouy\Youtube\Facades\Youtube;
 use App\Repositories\YoutubeRepository;
+use App\Http\Controllers\SearchVideosController;
 
 class YoutubeService
 {
@@ -62,6 +63,26 @@ class YoutubeService
             $save->insertVideo($search['results']);
             $search['results'] = array($search['results'], "yes");
             return $search['results'];
+        }
+
+    }
+
+    public function viewAll($view){
+        if ($view != NULL){
+            $view = new YoutubeRepository();
+            $getAll = $view->all();
+            $data[] = $getAll->getOriginal();
+
+            ## sort the YouTube Videos ready for the laravel blade
+            foreach ($data as $result){
+                $results[] = [
+                    'video'    => $result['video_id'],
+                    'title' => $result['title'],
+                ];
+            }
+
+            $pass = new SearchVideosController();
+            $pass->showAllVideos($data);
         }
 
     }

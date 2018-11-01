@@ -29,7 +29,7 @@ class SearchVideosController  extends Controller
         ## Call service to get the youtube API data
         $data = new YoutubeService();
         $search = $data->youtubeData ($searchItem,$num_of_video,$save);
-        
+
         ## Check if the save video option is included in search result array
         if (array_key_exists("1",$search)){
 
@@ -65,7 +65,23 @@ class SearchVideosController  extends Controller
         }
     }
 
-    ## Pass data into the kafka component
+
+    public function getAll()
+    {
+        $view = Input::post('viewAll');
+        $data = new YoutubeService();
+        $data->viewAll($view);
+
+    }
+
+
+    function showAllVideos($results){
+        dd($results);
+        return view('videos.show', compact('results'))->with('successMsg','This is a list of all the videos in database.');
+    }
+
+
+        ## Pass data into the kafka component
     public function passData(){
         return $this->data;
     }
