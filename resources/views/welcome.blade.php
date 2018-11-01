@@ -75,6 +75,8 @@
 
     </style>
 
+    <script>document.getElementById(indtrmnt).indeterminate = true;</script>
+
 
 </head>
 <body>
@@ -91,6 +93,7 @@
             <input required type="text" class="form-control form-control input-lg"  placeholder="Enter a search keyword" name="searchItem"><br>
             <label for="num_of_video">Number of Videos:</label>
             <input required  type="number" min="1" max="50" class="form-control form-control input-lg" id="num_of_video" placeholder="Select number of videos (maximum: 50)" name="num_of_video"><br>
+            <label><input type=checkbox value="yes" name="save_video"> &ensp;Save your result into Database</label><br><br>
         <button type="submit" class="btn btn-primary">Submit</button>
         </div>
         {{ csrf_field() }}

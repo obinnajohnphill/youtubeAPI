@@ -9,10 +9,12 @@
 namespace App\Services;
 
 use Alaouy\Youtube\Facades\Youtube;
+use App\Repositories\YoutubeRepository;
 
 class YoutubeService
 {
-    public function youtubeData ($searchItem,$num_of_video){
+    public function youtubeData ($searchItem,$num_of_video,$save){
+
 
         $params = [
             'q' => $searchItem,
@@ -46,10 +48,16 @@ class YoutubeService
         // Go back a page
         $search = Youtube::paginateResults($params, $pageTokens[0]);
 
-        // Add results key with info parameter set
-        // print_r($search['results']);
+        ## Determine whether to save video into DB or not
+        if ($save == NULL){
+            return $search['results'];
+        }else{
+            $save = new YoutubeRepository();
+            $save->insertVideo($search['results']);
+            $search['results'] = array($search['results'],"yes");
+            return $search['results'];
+        }
 
-        return $search['results'];
 
     }
 

@@ -71,10 +71,13 @@
 <body>
 <div class="content">
     <div class="title m-b-md">
-        <h2>Here's Your YouTube Videos Search Result</h2>
+        <h2>YouTube Videos Search Result</h2>
     </div>
 
     @yield('content')
+    @if(!empty($successMsg))
+        <div class="alert alert-success"><strong>{{ $successMsg }}</strong></div>
+    @endif
     @if(isset($results))
         @foreach($results as $result)
             <h4>{{$result['title']}}</h4>

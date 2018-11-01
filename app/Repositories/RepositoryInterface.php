@@ -13,6 +13,6 @@ interface RepositoryInterface
 {
     public function all();
 
-    public function insertVideo($video_id, $title);
+    public function insertVideo($data);
 }
 

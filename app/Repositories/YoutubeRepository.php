@@ -19,18 +19,20 @@ class YoutubeRepository implements RepositoryInterface
         $data = YoutubeVideosModel::all();
 
         foreach ($data as $videos) {
-            //echo $videos->name;
-
             return $videos;
         }
     }
 
 
-    public function insertVideo($video_id,$title){
-        $video = new YoutubeVideosModel;
-        $video->video_id = $video_id;
-        $video->video_title = $title;
-        $video->save();
+    public function insertVideo($data){
+
+        foreach ($data as $result){
+            $video = new YoutubeVideosModel;
+            $video->video_id = $result->id->videoId;
+            $video->title = $result->snippet->title;
+            $video->save();
+        }
+
     }
 
 

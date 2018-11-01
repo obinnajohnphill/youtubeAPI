@@ -23,8 +23,4 @@ class YoutubeVideosModel extends Model
      */
      protected $table = 'youtube_videos';
 
-
-    const CREATED_AT = 'creation_date';
-    const UPDATED_AT = 'last_update';
-
 }

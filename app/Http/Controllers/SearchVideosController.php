@@ -24,13 +24,14 @@ class SearchVideosController  extends Controller
         ## Get the post request data from blade
         $searchItem = Input::post('searchItem') ;
         $num_of_video = Input::post('num_of_video');
+        $save = Input::post('save_video');
 
         ## Call service to get the youtube API data
         $data = new YoutubeService();
-        $search = $data->youtubeData ($searchItem,$num_of_video);
+        $search = $data->youtubeData ($searchItem,$num_of_video,$save);
 
         ## sort the YouTube Videos ready for the laravel blade
-        foreach ($search as $result){
+        foreach ($search[0] as $result){
 
            $video  = $result->id->videoId;
            $title  = $result->snippet->title;
@@ -45,9 +46,11 @@ class SearchVideosController  extends Controller
         }
 
         ## Return data (video details) to the show blade
-        return view('videos.show', compact('results'));
-
-
+        if($search[1] == NULL){
+            return view('videos.show', compact('results'));
+        }else{
+            return view('videos.show', compact('results'))->with('successMsg','These video(s) have been successfully save into the database.');
+        }
     }
 
     ## Pass data into the kafka component
