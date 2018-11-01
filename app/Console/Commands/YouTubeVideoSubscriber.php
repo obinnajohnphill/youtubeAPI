@@ -49,7 +49,7 @@ class YouTubeVideoSubscriber extends Command
         $this->pubsub = $factory->make('kafka', $config);
 
         $this->data = new SearchVideosController();
-        $this->data = passData();
+       // $this->data = passData();
 
     }
 
