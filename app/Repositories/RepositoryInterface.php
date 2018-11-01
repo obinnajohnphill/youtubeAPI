@@ -14,7 +14,5 @@ interface RepositoryInterface
     public function all();
 
     public function insertVideo($data);
-
-    public function cannotSave();
 }
 

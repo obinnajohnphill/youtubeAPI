@@ -38,15 +38,10 @@ class YoutubeRepository implements RepositoryInterface
                 $video->save();
             } else {
                 $this->cannotSave = true;
-                dd($this->cannotSave);
+                return $this->cannotSave;
             }
         }
 
-    }
-
-    ## Sets to true if video(s) has duplicate
-    public function cannotSave(){
-       return $this->cannotSave;
     }
 
 }

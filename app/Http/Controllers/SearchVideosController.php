@@ -17,6 +17,7 @@ class SearchVideosController  extends Controller
 {
     public $data;
     public $save_video;
+    public $duplicate;
 
     public function index()
     {
@@ -28,9 +29,13 @@ class SearchVideosController  extends Controller
         ## Call service to get the youtube API data
         $data = new YoutubeService();
         $search = $data->youtubeData ($searchItem,$num_of_video,$save);
-
+        
         ## Check if the save video option is included in search result array
         if (array_key_exists("1",$search)){
+
+            if ($search[1] == "duplicate"){
+                $this->duplicate = true;
+            }
             $this->save_video = true;
             $search = $search[0];
         }
@@ -52,7 +57,10 @@ class SearchVideosController  extends Controller
         ## Return data (video details) to the show blade
         if($this->save_video  == NULL){
             return view('videos.show', compact('results'));
-        }else{
+        }else if ($this->duplicate == true){
+            return view('videos.show', compact('results'))->with('unsuccessMsg','Unable to save video(s).There exist duplicate video(s) in the database.');
+        }
+        else{
             return view('videos.show', compact('results'))->with('successMsg','These video(s) have been successfully save into the database.');
         }
     }
