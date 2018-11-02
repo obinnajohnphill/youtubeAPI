@@ -72,6 +72,7 @@ class SearchVideosController  extends Controller
         $data = new YoutubeService();
         $results = $data->viewAll($view);
         return view('videos.showall', compact('results'))->with('successMsg','This is a list of all the videos in database.');
+
     }
 
 

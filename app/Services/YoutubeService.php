@@ -10,7 +10,7 @@ namespace App\Services;
 
 use Alaouy\Youtube\Facades\Youtube;
 use App\Repositories\YoutubeRepository;
-use App\Http\Controllers\SearchVideosController;
+
 
 class YoutubeService
 {
@@ -68,19 +68,18 @@ class YoutubeService
     }
 
     public function viewAll($view){
+        $results = array();
+        ## Process all videos from database ready to pass to the controller then into the viewall blade
         if ($view != NULL){
             $view = new YoutubeRepository();
             $getAll = $view->all();
-            $data[] = $getAll->getOriginal();
-
-            ## sort the YouTube Videos ready for the laravel blade
-            foreach ($data as $result){
+            foreach ($getAll as $vid){
                 $results[] = [
-                    'video'    => $result['video_id'],
-                    'title' => $result['title'],
+                    'video'    => $vid->getAttributes()['video_id'],
+                    'title' => $vid->getAttributes()['title'],
                 ];
-            }
 
+            }
             return $results;
         }
 

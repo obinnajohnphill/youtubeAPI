@@ -18,10 +18,12 @@ class YoutubeRepository implements RepositoryInterface
     // Get all instances of model
     public function all()
     {
+        $list = array();
         $data = YoutubeVideosModel::all();
         foreach ($data as $videos) {
-            return $videos;
+            $list[] = $videos;
         }
+        return $list;
     }
 
 
