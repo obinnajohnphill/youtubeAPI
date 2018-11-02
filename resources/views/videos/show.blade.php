@@ -76,14 +76,11 @@
     </div>
 
     @yield('content')
-       <div align=left">
-        <a class="btn btn-info btn-sm" float-right href="../"><strong>Back to the search page</strong></a>
-      </div>
-            <form id="form" method="post" action="/viewAll">
-                   <input type="hidden" value="yes" name="viewAll"><br>
-                <button type="submit" class="btn btn-primary btn-sm"><strong>View All Videos Saved</strong></button>
-                {{ csrf_field() }}
-            </form><br>
+
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary btn-lg" onclick="location.href = '../';">Welcome</button>
+        <button type="button" class="btn btn-secondary btn-lg" onclick="formFunction()">All Database Videos</button>
+    </div><br><br>
 
 @if(!empty($successMsg))
         <div class="alert alert-success"><strong>{{ $successMsg }}</strong></div>
@@ -108,6 +105,21 @@
         @endif
 
 </div>
+
+<form id="submitForm" method="post" action="/viewAll">
+    <input type="hidden" value="yes" name="viewAll"><br>
+    {{ csrf_field() }}
+</form><br>
+
+
 </body>
+
+
+<script>
+    function formFunction() {
+        document.getElementById("submitForm").submit();
+    }
+</script>
+
 </html>
 

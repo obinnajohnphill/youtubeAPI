@@ -86,6 +86,13 @@
         <h2>Welcome to Obinna's YouTube Videos API</h2>
     </div>
 
+
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary btn-lg" onclick="location.href = '../';">Welcome</button>
+        <button type="button" class="btn btn-secondary btn-lg" onclick="formFunction()">All Database Videos</button>
+    </div><br><br>
+
+
     <form id="form" method="post" action="/videos">
         <br>
         <div class="col-md-4" align ="left">
@@ -98,8 +105,20 @@
         </div>
         {{ csrf_field() }}
     </form>
-
 </div>
 
+
+<form id="submitForm" method="post" action="/viewAll">
+    <input type="hidden" value="yes" name="viewAll"><br>
+    {{ csrf_field() }}
+</form><br>
+
+
 </body>
+
+<script>
+    function formFunction() {
+        document.getElementById("submitForm").submit();
+    }
+</script>
 </html>
