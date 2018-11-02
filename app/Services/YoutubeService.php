@@ -81,8 +81,7 @@ class YoutubeService
                 ];
             }
 
-            $pass = new SearchVideosController();
-            $pass->showAllVideos($data);
+            return $results;
         }
 
     }

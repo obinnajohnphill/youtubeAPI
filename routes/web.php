@@ -20,6 +20,10 @@ Route::get('/videos', function () {
     return view('videos/show');
 });
 
+Route::get('/viewAll', function () {
+    return view('videos/showall');
+});
+
 Route::post('videos','SearchVideosController@index');
 
 Route::post('viewAll','SearchVideosController@getAll');

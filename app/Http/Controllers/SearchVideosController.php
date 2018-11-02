@@ -70,15 +70,10 @@ class SearchVideosController  extends Controller
     {
         $view = Input::post('viewAll');
         $data = new YoutubeService();
-        $data->viewAll($view);
-
+        $results = $data->viewAll($view);
+        return view('videos.showall', compact('results'))->with('successMsg','This is a list of all the videos in database.');
     }
 
-
-    function showAllVideos($results){
-        dd($results);
-        return view('videos.show', compact('results'))->with('successMsg','This is a list of all the videos in database.');
-    }
 
 
         ## Pass data into the kafka component
