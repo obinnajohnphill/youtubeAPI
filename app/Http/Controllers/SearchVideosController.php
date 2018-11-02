@@ -26,7 +26,6 @@ class SearchVideosController  extends Controller
         $num_of_video = Input::post('num_of_video');
         $save = Input::post('save_video');
 
-
         ## Call service to get the youtube API data
         $data = new YoutubeService();
         $search = $data->youtubeData ($searchItem,$num_of_video,$save);
@@ -56,7 +55,7 @@ class SearchVideosController  extends Controller
         }
 
         ## Return data (video details) to the show blade
-        if($this->save_video  == NULL){
+        if($this->save_video  == null){
             return view('videos.show', compact('results'));
         }else if ($this->duplicate == true){
             return view('videos.show', compact('results'))->with('unsuccessMsg','Unable to save video(s).There exist duplicate video(s) in the database.');

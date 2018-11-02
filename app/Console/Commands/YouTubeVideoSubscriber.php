@@ -48,7 +48,7 @@ class YouTubeVideoSubscriber extends Command
         $config['consumer_group_id'] = self::class;
         $this->pubsub = $factory->make('kafka', $config);
 
-        $this->data = new SearchVideosController();
+       // $this->data = new SearchVideosController();
        // $this->data = passData();
 
     }

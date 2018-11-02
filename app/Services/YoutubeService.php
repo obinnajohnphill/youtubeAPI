@@ -50,7 +50,7 @@ class YoutubeService
         $search = Youtube::paginateResults($params, $pageTokens[0]);
 
         ## Determine whether to save video into DB or not
-        if ($save_video == NULL) {
+        if ($save_video == null) {
             return $search['results'];
         }
         else {
@@ -71,7 +71,7 @@ class YoutubeService
     public function viewAll($view){
         $results = array();
         ## Process all videos from database ready to pass to the controller then into the viewall blade
-        if ($view != NULL){
+        if ($view != null){
             $view = new YoutubeRepository();
             $getAll = $view->all();
             foreach ($getAll as $vid){
