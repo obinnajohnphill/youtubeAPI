@@ -77,9 +77,9 @@
 
     @yield('content')
 
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary btn-lg" onclick="location.href = '../';">Welcome</button>
-        <button type="button" class="btn btn-secondary btn-lg" onclick="formFunction()">All Database Videos</button>
+    <div class="btn-group" role="group">
+        <button type="button" class="btn btn-primary btn-lg" onclick="location.href = '../';"><strong>Welcome</strong></button>
+        <button type="button" class="btn btn-warning btn-lg" onclick="formFunction()"><strong>All Database Videos</strong></button>
     </div><br><br>
 
 @if(!empty($successMsg))
