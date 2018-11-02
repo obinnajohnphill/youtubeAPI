@@ -17,7 +17,6 @@ class YoutubeService
     public function youtubeData ($searchItem,$num_of_video,$save_video)
     {
 
-
         $params = [
             'q' => $searchItem,
             'type' => 'video',
@@ -51,18 +50,20 @@ class YoutubeService
         $search = Youtube::paginateResults($params, $pageTokens[0]);
 
         ## Determine whether to save video into DB or not
-        $save = new YoutubeRepository();
-        $duplicate = $save->insertVideo($search['results']);
         if ($save_video == NULL) {
             return $search['results'];
-        }else if ($duplicate == true){
-            $search['results'] = array($search['results'],"duplicate");
-            return $search['results'];
-        }else {
+        }
+        else {
             $save = new YoutubeRepository();
-            $save->insertVideo($search['results']);
-            $search['results'] = array($search['results'], "yes");
-            return $search['results'];
+            $duplicate = $save->insertVideo($search['results']);
+            if ($duplicate == true){
+                $search['results'] = array($search['results'],"duplicate");
+                return $search['results'];
+            }else{
+                $save->insertVideo($search['results']);
+                $search['results'] = array($search['results'], "yes");
+                return $search['results'];
+            }
         }
 
     }
