@@ -11,6 +11,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
 use App\Services\YoutubeService;
+use APP\Events\VideoSaved;
+
 
 
 class SearchVideosController  extends Controller
@@ -61,6 +63,7 @@ class SearchVideosController  extends Controller
             return view('videos.show', compact('results'))->with('unsuccessMsg','Unable to save video(s).There exist duplicate video(s) in the database.');
         }
         else{
+            event(new VideoSaved ('These video(s) have been successfully save into the database.'));
             return view('videos.show', compact('results'))->with('successMsg','These video(s) have been successfully save into the database.');
         }
     }
@@ -79,7 +82,8 @@ class SearchVideosController  extends Controller
 
         ## Pass data into the kafka component
     public function passData(){
-        return $this->data;
+        //return $this->data;
+
     }
 
 }

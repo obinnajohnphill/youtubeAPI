@@ -7,8 +7,11 @@ use App\Events\VideoSaved;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendVideoSavedNotification
+class SendVideoSavedNotification implements ShouldQueue
 {
+
+    use InteractsWithQueue;
+
     /**
      * Create the event listener.
      *
@@ -27,6 +30,8 @@ class SendVideoSavedNotification
      */
     public function handle(VideoSaved $event)
     {
-        //
+        if (true) {
+            $this->release(30);
+        }
     }
 }
