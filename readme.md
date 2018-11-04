@@ -1,12 +1,3 @@
-<strong>Usage:</strong>
-
-clone https://github.com/obinnajohnphill/youtubeAPI.git
-
-cd  youtubeAPI
-
-php artisan migrate
-
-(kafka event notification not completed)
 
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
