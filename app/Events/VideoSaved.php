@@ -22,10 +22,10 @@ class VideoSaved
      *
      * @return void
      */
-    public function __construct(YoutubeVideosModel $video_id)
+    public function __construct()
     {
         //
-        $this->video_id = $video_id;
+        $this->video_id = "These video(s) have been successfully save into the database.";
     }
 
     /**

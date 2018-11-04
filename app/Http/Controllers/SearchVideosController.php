@@ -63,7 +63,7 @@ class SearchVideosController  extends Controller
             return view('videos.show', compact('results'))->with('unsuccessMsg','Unable to save video(s).There exist duplicate video(s) in the database.');
         }
         else{
-            event(new VideoSaved ('These video(s) have been successfully save into the database.'));
+            event(new VideoSaved ());
             return view('videos.show', compact('results'))->with('successMsg','These video(s) have been successfully save into the database.');
         }
     }
