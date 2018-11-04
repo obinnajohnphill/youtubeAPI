@@ -12,14 +12,14 @@ class YoutubeVideos extends Command
      *
      * @var string
      */
-    protected $signature = 'subscriber:name';
+    protected $signature = 'youtube_videos';
 
     /**
      * The subscriber description.
      *
      * @var string
      */
-    protected $description = 'PubSub subscriber for ________';
+    protected $description = 'Notification when video is saved into database';
 
     /**
      * @var PubSubAdapterInterface
@@ -43,8 +43,8 @@ class YoutubeVideos extends Command
      */
     public function handle()
     {
-        $this->pubsub->subscribe('channel_name', function ($message) {
+        dd($this->pubsub->subscribe('youtube_videos', function ($message) {
 
-        });
+        }));
     }
 }

@@ -11,8 +11,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
 use App\Services\YoutubeService;
-use APP\Events\VideoSaved;
-
+use App\Events\VideoSaved;
 
 
 class SearchVideosController  extends Controller

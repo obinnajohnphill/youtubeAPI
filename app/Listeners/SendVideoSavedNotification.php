@@ -30,8 +30,8 @@ class SendVideoSavedNotification implements ShouldQueue
      */
     public function handle(VideoSaved $event)
     {
-        if (true) {
-            $this->release(30);
-        }
+
+       var_dump($event->message);
+
     }
 }

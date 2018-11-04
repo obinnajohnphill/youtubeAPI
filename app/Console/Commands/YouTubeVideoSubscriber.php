@@ -14,14 +14,14 @@ class YouTubeVideoSubscriber extends Command
      *
      * @var string
      */
-    protected $signature = 'subscriber:name';
+    protected $signature = 'youtube_videos';
 
     /**
      * The subscriber description.
      *
      * @var string
      */
-    protected $description = 'PubSub subscriber for ________';
+    protected $description = 'Notification when video is saved into database';
 
     /**
      * @var PubSubAdapterInterface
@@ -42,14 +42,10 @@ class YouTubeVideoSubscriber extends Command
     {
         parent::__construct();
 
-       // $this->pubsub = $pubsub;
 
         $config = config('pubsub.connections.kafka');
         $config['consumer_group_id'] = self::class;
         $this->pubsub = $factory->make('kafka', $config);
-
-       // $this->data = new SearchVideosController();
-       // $this->data = passData();
 
     }
 

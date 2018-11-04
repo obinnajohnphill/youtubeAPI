@@ -9,13 +9,14 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use App\YoutubeVideosModel;
+use App\Http\Controllers\SearchVideosController;
+use Illuminate\Support\Facades\Event;
 
-class VideoSaved
+class VideoSaved extends Event
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $video_id;
+    public $message;
 
     /**
      * Create a new event instance.
@@ -24,8 +25,8 @@ class VideoSaved
      */
     public function __construct()
     {
-        //
-        $this->video_id = "These video(s) have been successfully save into the database.";
+
+        $this->message = "These video(s) have been successfully save into the database.";
     }
 
     /**
