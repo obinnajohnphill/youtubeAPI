@@ -17,6 +17,7 @@ class YoutubeService
     public function youtubeData ($searchItem,$num_of_video,$save_video)
     {
 
+
         $params = [
             'q' => $searchItem,
             'type' => 'video',
@@ -48,6 +49,7 @@ class YoutubeService
 
         // Go back a page
         $search = Youtube::paginateResults($params, $pageTokens[0]);
+
 
         ## Determine whether to save video into DB or not
         if ($save_video == null) {
